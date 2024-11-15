@@ -4,8 +4,19 @@ public class nilaimahasiswa03 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        String[] mahasiswa = {"Sari", "Rina", "Yani", "Dwi", "Lusi"};
-        int[][] nilai = new int[5][7];  
+        System.out.print("Masukkan jumlah mahasiswa: ");
+        int jumlahMahasiswa = scanner.nextInt();
+        System.out.print("Masukkan jumlah minggu: ");
+        int jumlahMinggu = scanner.nextInt();
+
+        String[] mahasiswa = new String[jumlahMahasiswa];
+        int[][] nilai = new int[jumlahMahasiswa][jumlahMinggu];
+
+        for (int i = 0; i < jumlahMahasiswa; i++) {
+            System.out.print("Masukkan nama mahasiswa ke-" + (i + 1) + ": ");
+            mahasiswa[i] = scanner.next();
+        }
+
 
         inputDataNilai(mahasiswa, nilai, scanner);
 
@@ -15,6 +26,7 @@ public class nilaimahasiswa03 {
 
         tampilkanMahasiswaTertinggi(mahasiswa, nilai);
     }
+
     public static void inputDataNilai(String[] mahasiswa, int[][] nilai, Scanner scanner) {
         for (int i = 0; i < mahasiswa.length; i++) {
             System.out.println("Masukkan nilai untuk " + mahasiswa[i] + ": ");
@@ -35,10 +47,11 @@ public class nilaimahasiswa03 {
             System.out.println();
         }
     }
-    public static void cariMingguTertinggi(int[][] nilai) {
-        int[] totalNilaiMinggu = new int[7];
 
-        for (int j = 0; j < 7; j++) {
+    public static void cariMingguTertinggi(int[][] nilai) {
+        int[] totalNilaiMinggu = new int[nilai[0].length];
+
+        for (int j = 0; j < nilai[0].length; j++) {
             for (int i = 0; i < nilai.length; i++) {
                 totalNilaiMinggu[j] += nilai[i][j];
             }
@@ -53,7 +66,6 @@ public class nilaimahasiswa03 {
 
         System.out.println("\nMinggu dengan nilai tertinggi adalah Minggu ke-" + (mingguTertinggi + 1));
     }
-
 
     public static void tampilkanMahasiswaTertinggi(String[] mahasiswa, int[][] nilai) {
         int nilaiTertinggi = 0;
@@ -74,4 +86,3 @@ public class nilaimahasiswa03 {
         System.out.println("\nMahasiswa dengan nilai tertinggi adalah " + mahasiswaTertinggi + " dengan total nilai " + nilaiTertinggi);
     }
 }
-
